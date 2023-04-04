@@ -31,6 +31,9 @@ class Snake {
   // 蛇增加身體的方法
   addBody() {
     // 向 element 中添加一個 div
-    this.element.insertAdjacentElement('beforeend', '<div></div>');
+    const newDiv = document.createElement('div');
+    this.element.insertAdjacentElement('beforeend', newDiv);
   }
 }
+
+export default Snake;
