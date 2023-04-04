@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "ES2015",
+    "strict": true,
+    "noEmitOnError": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  }
+}
+
+// {
+//   /*
+//     "include" 用來指定那些 TS 文件需要被編譯
+//       路徑： ** 表示任意目錄 * 表示任意文件
+
+//     "exclude" 不需要被編譯的文件
+//       默認： ["node_modules", "bower_components", "jspm_packages"]
+//   */
+//   "include": ["./src/**/*"],
+//   // "exclude": []
+
+//   /*
+//     "compilerOptions" 編譯器的選項
+//   */
+//   "compilerOptions": {
+//     // target 用來指定 TS 被編譯為的 ES 版本
+//     "target": "ES2015",
+//     // module 指定模組化的規範
+//     "module": "System",
+//     // lib 用來指定項目中要使用的庫
+//     // "lib": []
+
+//     // outDir 用來指定編譯後文件所在的目錄
+//     "outDir": "./dist",
+//     // outFile 將代碼合併成一個文件
+//     // "outFile": "./dist/app.js"
+
+//     // 是否對 JS 文件進行編譯
+//     "allowJs": true,
+//     // 是否檢查 JS 代碼是否符合規範
+//     "checkJs": true,
+//     // 是否移除註解的編譯
+//     "removeComments": true,
+//     // 不生成編譯後的文件
+//     "noEmit": false,
+//     // 當有錯誤時不生成編譯文件
+//     "noEmitOnError": true,
+
+//     // 所有嚴格檢查的總開關
+//     "strict": true,
+//     // 用來編譯後的文件是否使用嚴格模式
+//     "alwaysStrict": true,
+//     // 在不定譯型別是否默認 any
+//     "noImplicitAny": true,
+//     // 不允許不明確類型的 this
+//     "noImplicitThis": true,
+//     // 嚴格檢查空值
+//     "strictNullChecks": true,
+//   }
+// }
