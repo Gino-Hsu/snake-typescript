@@ -22,9 +22,16 @@ class Snake {
 
   // 設置蛇頭的座標
   set X(value) {
+    // 如果新的X值與舊值一樣，則直接返回
+    if (this.X === value) return;
+
+    // 判斷有沒有超出0~290的範圍，蛇撞牆了
+    if (value < 0 || value > 290) throw new Error('蛇撞牆了!');
     this.headEle.style.left = value + 'px';
   }
   set Y(value) {
+    if (this.Y === value) return;
+    if (value < 0 || value > 290) throw new Error('蛇撞牆了!');
     this.headEle.style.top = value + 'px';
   }
 

@@ -68,9 +68,19 @@ class GameControl {
         break;
     }
 
+    // 檢查是否吃到食物了
+    this.checkEat(X, Y);
+
     // 實際修改時的座標
-    this.snake.X = X;
-    this.snake.Y = Y;
+    try {
+      this.snake.Y = Y;
+      this.snake.X = X;
+    } catch (e: unknown) {
+      // 進入 catch，說明出現 error，遊戲結束，彈出一個提示訊息
+      if (e instanceof Error) alert(e.message + ' Game Over!');
+      // 將 isLive 設置為 false
+      this.isLive = false;
+    }
 
     // 開啟一個定時調用
     this.isLive &&
@@ -78,6 +88,19 @@ class GameControl {
         this.run.bind(this),
         this.initSpeed - (this.scorePanel.level - 1) * this.levelUpSpeed
       );
+  }
+
+  // 定義方法，檢查蛇是否吃到食物
+  checkEat(X: number, Y: number) {
+    if (X === this.food.X && Y === this.food.Y) {
+      console.log('吃到食物了!');
+      // 食物的位置要改變
+      this.food.change();
+      // 分數要增加
+      this.scorePanel.addScore();
+      // 蛇要增加一節
+      this.snake.addBody();
+    }
   }
 }
 
