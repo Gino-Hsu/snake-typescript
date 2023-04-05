@@ -8,6 +8,7 @@
 
 body {
   font: bold 20px "Courier";
+  background-color: #636363;
 }
 
 #main {
@@ -51,6 +52,7 @@ body {
     flex-flow: row wrap;
     justify-content: space-between;
     align-content: space-between;
+    animation: flash 1s infinite;
 
     &>div {
       width: 4px;
@@ -66,4 +68,16 @@ body {
   width: 300px;
   display: flex;
   justify-content: space-between;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
