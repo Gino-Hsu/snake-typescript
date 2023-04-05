@@ -15,7 +15,7 @@ class GameControl {
   // 遊戲初始速度
   initSpeed: number = 300;
   // 升等增加速度
-  levelUpSpeed: number = 30;
+  levelUpSpeed: number = 50;
 
   constructor() {
     this.snake = new Snake();
@@ -36,9 +36,35 @@ class GameControl {
   // 創建鍵盤按下的 eventHandler
   keydownHandler(e: KeyboardEvent) {
     // 需要檢查 e.key 的值是否合法(使用者是否只按了上、下、左、右)
-
-    // 修改 direction 屬性
-    this.direction = e.key;
+    // 防止蛇掉頭
+    if (this.snake.bodiesEle[1]) {
+      if (
+        (this.direction === 'ArrowUp' || this.direction === 'Up') &&
+        (e.key === 'ArrowDown' || e.key === 'Down')
+      ) {
+        this.direction = 'ArrowUp';
+      } else if (
+        (this.direction === 'ArrowDown' || this.direction === 'Down') &&
+        (e.key === 'ArrowUp' || e.key === 'Up')
+      ) {
+        this.direction = 'ArrowDown';
+      } else if (
+        (this.direction === 'ArrowLeft' || this.direction === 'Left') &&
+        (e.key === 'ArrowRight' || e.key === 'Right')
+      ) {
+        this.direction = 'ArrowLeft';
+      } else if (
+        (this.direction === 'ArrowRight' || this.direction === 'Right') &&
+        (e.key === 'ArrowLeft' || e.key === 'Left')
+      ) {
+        this.direction = 'ArrowRight';
+      } else {
+        this.direction = e.key;
+      }
+    } else {
+      // 修改 direction 屬性
+      this.direction = e.key;
+    }
   }
 
   // 創建一個什哦動的方法
@@ -93,13 +119,12 @@ class GameControl {
   // 定義方法，檢查蛇是否吃到食物
   checkEat(X: number, Y: number) {
     if (X === this.food.X && Y === this.food.Y) {
-      console.log('吃到食物了!');
-      // 食物的位置要改變
-      this.food.change();
       // 分數要增加
       this.scorePanel.addScore();
       // 蛇要增加一節
       this.snake.addBody();
+      // 食物的位置要改變
+      this.food.change();
     }
   }
 }

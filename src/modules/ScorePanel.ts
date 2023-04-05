@@ -13,7 +13,7 @@ class ScorePanel {
   // 設置一個多少分升級的變量
   upScore: number;
 
-  constructor(maxLevel: number = 10, upScore: number = 5) {
+  constructor(maxLevel: number = 10, upScore: number = 10) {
     this.scoreEle = document.getElementById('score')!;
     this.levelEle = document.getElementById('level')!;
     this.maxLevel = maxLevel;
